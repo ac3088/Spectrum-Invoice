@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Spectrum Invoice</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="table">
+        <table id="table">
+            <tr>
+                <th>Grade</th>
+                <th>Subject</th>
+                <th>Story Book</th>
+                <th>Weeks</th>
+                <th>Copies</th>
+                <th>Books</th>
+                <th>Pages</th>
+                <th>Price</th>
+                <th class="delete-row-cell"></th>
+            </tr>
+        </table>
+    </div>
+
+    <div class="params">
+        <div class="add-books-btn">
+            <button id="add-books-btn">
+                Add Books
+            </button>
+        </div>
+
+        <div class="grade-select">
+            <select id="grade-select">
+                <option value="Prep" class="no-chem">Prep</option>
+                <option value="1" class="no-chem">1</option>
+                <option value="2" class="no-chem">2</option>
+                <option value="3" class="no-chem">3</option>
+                <option value="4" class="no-chem">4</option>
+                <option value="5" class="no-chem">5</option>
+                <option value="6" class="no-chem">6</option>
+                <option value="7" class="no-chem">7</option>
+                <option value="8" class="no-chem">8</option>
+                <option value="9" class="no-chem">9</option>
+                <option value="10" class="no-chem">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="Scholarship" class="no-chem">Scholarship</option>
+                <option value="Selective" class="no-chem">Selective</option>
+            </select>
+            <label for="grade-select" style="padding-left: 5px">Grade</label>
+        </div>
+
+        <div class="subject-select">
+            <select id="subject-select">
+                <option value="English">English</option>
+                <option value="Math">Math</option>
+                <option value="Chemistry">Chemistry</option>
+            </select>
+            <label for="subject-select" style="padding-left: 5px">Subject</label>
+        </div>
+
+        <div class="storybook-select">
+            <select id="storybook-select">
+                <option value="None">None</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <label for="storybook-select" style="padding-left: 10px">Story Book?</label>
+        </div>
+
+        <div class="week-select">
+            <fieldset>
+                <div>
+                    <input type="checkbox" value="1" class="week-checkbox" id="w1">
+                    <label for="w1">Week 1</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="2" class="week-checkbox" id="w2">
+                    <label for="w2">Week 2</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="3" class="week-checkbox" id="w3">
+                    <label for="w3">Week 3</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="4" class="week-checkbox" id="w4">
+                    <label for="w4">Week 4</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="5" class="week-checkbox" id="w5">
+                    <label for="w5">Week 5</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="6" class="week-checkbox" id="w6">
+                    <label for="w6">Week 6</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="7" class="week-checkbox" id="w7">
+                    <label for="w7">Week 7</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="8" class="week-checkbox" id="w8">
+                    <label for="w8">Week 8</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="9" class="week-checkbox" id="w9">
+                    <label for="w9">Week 9</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="10" class="week-checkbox" id="w10">
+                    <label for="w10">Week 10</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="all">
+                    <label for="all">All</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="copies-field">
+            <input type="number" id="copies" min="1" value="1" style="width: 60px">
+            <label for="copies" style="padding-left: 5px">Copies</label>
+        </div>
+
+        <div class="price-params">
+            <fieldset>
+                <div>
+                    <input type="number" id="ppBook" min="0" value="0"
+                        style="width: 60px; margin-bottom: 10px; margin-top: 5px">
+                    <label for="ppBook" style="padding-left: 5px">Price per Book</label>
+                </div>
+                <div>
+                    <input type="number" id="ppPage" min="0" value="0" style="width: 60px; margin-bottom: 10px">
+                    <label for="ppPage" style="padding-left: 5px">Price per Page</label>
+                </div>
+                <div id="price-formula">
+                    Formula:<br>0*Books + 0*Pages
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="totals">
+            <fieldset>
+                Total Pages: <span id="total-pages">0</span><br>Total Books: <span id="total-books">0</span><br>Total
+                Price: $<span id="total-price">0.00</span>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="page-numbers">
+        English
+        <table id="page-numbers-e" style="margin-bottom: 20px">
+            <tr>
+                <th></th>
+                <th>Week 1</th>
+                <th>Week 2</th>
+                <th>Week 3</th>
+                <th>Week 4</th>
+                <th>Week 5</th>
+                <th>Week 6</th>
+                <th>Week 7</th>
+                <th>Week 8</th>
+                <th>Week 9</th>
+                <th>Week 10</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Prep</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-e-w10" /></td>
+                <td id="prep-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 1</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-e-w10" /></td>
+                <td id="1-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 2</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-e-w10" /></td>
+                <td id="2-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 3</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-e-w10" /></td>
+                <td id="3-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 4</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-e-w10" /></td>
+                <td id="4-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 5</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-e-w10" /></td>
+                <td id="5-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 6</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-e-w10" /></td>
+                <td id="6-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 7</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-e-w10" /></td>
+                <td id="7-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 8</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-e-w10" /></td>
+                <td id="8-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 9</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-e-w10" /></td>
+                <td id="9-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 10</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-e-w10" /></td>
+                <td id="10-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 11</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-e-w10" /></td>
+                <td id="11-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 12</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-e-w10" /></td>
+                <td id="12-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Scholarship</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-e-w10" /></td>
+                <td id="scholarship-e-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Selective</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-e-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-e-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-e-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-e-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-e-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-e-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-e-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-e-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-e-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-e-w10" /></td>
+                <td id="selective-e-t" value="0">0</td>
+            </tr>
+        </table>
+        Story Books
+        <table id="page-numbers-sb" style="margin-bottom:20px">
+            <tr>
+                <th>Year 7</th>
+                <th>Year 8</th>
+                <th>Year 9</th>
+                <th>Year 10</th>
+            </tr>
+            <tr>
+                <td><input type="number" min="0" value="0" class="sb-pn" id="y7-sb"></td>
+                <td><input type="number" min="0" value="0" class="sb-pn" id="y8-sb"></td>
+                <td><input type="number" min="0" value="0" class="sb-pn" id="y9-sb"></td>
+                <td><input type="number" min="0" value="0" class="sb-pn" id="y10-sb"></td>
+            </tr>
+        </table>
+        Math
+        <table id="page-numbers-m" style="margin-bottom: 20px">
+            <tr>
+                <th></th>
+                <th>Week 1</th>
+                <th>Week 2</th>
+                <th>Week 3</th>
+                <th>Week 4</th>
+                <th>Week 5</th>
+                <th>Week 6</th>
+                <th>Week 7</th>
+                <th>Week 8</th>
+                <th>Week 9</th>
+                <th>Week 10</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Prep</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="prep-m-w10" /></td>
+                <td id="prep-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 1</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="1-m-w10" /></td>
+                <td id="1-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 2</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="2-m-w10" /></td>
+                <td id="2-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 3</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="3-m-w10" /></td>
+                <td id="3-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 4</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="4-m-w10" /></td>
+                <td id="4-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 5</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="5-m-w10" /></td>
+                <td id="5-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 6</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="6-m-w10" /></td>
+                <td id="6-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 7</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="7-m-w10" /></td>
+                <td id="7-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 8</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="8-m-w10" /></td>
+                <td id="8-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 9</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="9-m-w10" /></td>
+                <td id="9-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 10</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="10-m-w10" /></td>
+                <td id="10-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 11</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-m-w10" /></td>
+                <td id="11-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 12</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-m-w10" /></td>
+                <td id="12-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Scholarship</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="scholarship-m-w10" /></td>
+                <td id="scholarship-m-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Selective</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-m-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-m-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-m-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-m-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-m-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-m-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-m-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-m-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-m-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="sel-m-w10" /></td>
+                <td id="selective-m-t" value="0">0</td>
+            </tr>
+        </table>
+        Chemistry
+        <table id="page-numbers-c" style="margin-bottom: 20px">
+            <tr>
+                <th></th>
+                <th>Week 1</th>
+                <th>Week 2</th>
+                <th>Week 3</th>
+                <th>Week 4</th>
+                <th>Week 5</th>
+                <th>Week 6</th>
+                <th>Week 7</th>
+                <th>Week 8</th>
+                <th>Week 9</th>
+                <th>Week 10</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Year 11</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-c-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-c-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-c-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-c-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-c-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-c-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-c-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-c-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-c-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="11-c-w10" /></td>
+                <td id="11-c-t" value="0">0</td>
+            </tr>
+            <tr>
+                <td>Year 12</td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-c-w1" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-c-w2" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-c-w3" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-c-w4" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-c-w5" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-c-w6" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-c-w7" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-c-w8" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-c-w9" /></td>
+                <td><input type="number" min="0" value="0" class="pn-input" id="12-c-w10" /></td>
+                <td id="12-c-t" value="0">0</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

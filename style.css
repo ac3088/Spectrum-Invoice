@@ -1,0 +1,74 @@
+th,
+td {
+    padding: 10px;
+}
+
+table,
+th,
+td {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.table {
+    float: left;
+    width: 37%;
+}
+
+.delete-row-cell {
+    border-top: hidden;
+    border-bottom: hidden;
+    border-right: hidden;
+}
+
+.params {
+    float: left;
+    width: 15%;
+}
+
+.add-books-btn {
+    margin-bottom: 10px;
+}
+
+.grade-select {
+    margin-bottom: 10px;
+}
+
+.subject-select {
+    margin-bottom: 10px;
+}
+
+.storybook-select {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.week-select {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.copies-field {
+    margin-bottom: 100px;
+}
+
+.price-params {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.totals {
+    display: flex;
+}
+
+.page-numbers {
+    float: right;
+}
+
+.pn-input {
+    width: 45px;
+}
+
+.sb-pn {
+    width: 45px;
+}
