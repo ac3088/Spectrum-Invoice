@@ -2,7 +2,7 @@ A small web app to make the process of invoicing for a certain customer at work 
 
 ## To-Do List:
 
-- Refactor (because the code is kinda ugly lol)
+- ~~Refactor (because the code is kinda ugly lol)~~
 - Error handling & input validation
 - Saving and loading templates for page numbers
 - Print the table on the left containing all the orders

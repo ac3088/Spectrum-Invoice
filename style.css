@@ -1,3 +1,7 @@
+body {
+    display: flex;
+}
+
 th,
 td {
     padding: 10px;
@@ -10,9 +14,12 @@ td {
     border: 1px solid black;
 }
 
-.table {
-    float: left;
-    width: 37%;
+table {
+    margin-bottom: 10px;
+}
+
+table input {
+    width: 45px;
 }
 
 .delete-row-cell {
@@ -21,54 +28,31 @@ td {
     border-right: hidden;
 }
 
-.params {
-    float: left;
+.box {
+    display: flex;
+    flex-direction: column;
+}
+
+.box:nth-child(1) {
+    width: 35%;
+}
+
+.box:nth-child(2) {
     width: 15%;
+    gap: 15px;
 }
 
-.add-books-btn {
-    margin-bottom: 10px;
-}
-
-.grade-select {
-    margin-bottom: 10px;
-}
-
-.subject-select {
-    margin-bottom: 10px;
-}
-
-.storybook-select {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.week-select {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.copies-field {
-    margin-bottom: 100px;
-}
-
-.price-params {
-    display: flex;
-    margin-bottom: 50px;
-}
-
+.weeks,
+.prices,
 .totals {
     display: flex;
 }
 
-.page-numbers {
-    float: right;
+.weeks label,
+.prices label {
+    display: block;
 }
 
-.pn-input {
-    width: 45px;
-}
-
-.sb-pn {
-    width: 45px;
+.prices input {
+    width: 60px;
 }
